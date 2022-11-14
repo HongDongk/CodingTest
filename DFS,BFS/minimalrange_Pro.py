@@ -2,6 +2,26 @@
 # 지나가야 하는 칸의 개수의 최솟값을 return 하도록 solution 함수를 완성해주세요. 
 # 단, 상대 팀 진영에 도착할 수 없을 때는 -1을 return 해주세요.
 
+
+#DFS 풀이
+answer = 0 
+
+def dfs(numbers, target, idx, value):
+    global answer
+    if idx == len(numbers):
+        if target == value:
+            answer+=1
+            return answer
+    else:
+        dfs(numbers, target, idx+1, value+numbers[idx])
+        dfs(numbers, target, idx+1, value-numbers[idx])
+        
+def solution(numbers, target):
+    global answer
+    dfs(numbers, target, 0, 0)
+    
+    return answer
+
 # BFS 풀이
 from collections import deque
 
