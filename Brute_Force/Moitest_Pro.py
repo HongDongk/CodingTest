@@ -8,7 +8,6 @@
 # 1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때, 가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.
 
 def solution(answers):
-    
     answer = []
     math1 = [1,2,3,4,5]
     math2 = [2,1,2,3,2,4,2,5]
@@ -36,3 +35,29 @@ def solution(answers):
         answer.append(3)
         
     return answer
+
+# enumerate사용
+def solution(answers):
+    math1 = [1,2,3,4,5]
+    math2 = [2,1,2,3,2,4,2,5]
+    math3 = [3,3,1,1,2,2,4,4,5,5]
+    score = [0,0,0]
+    result = []
+
+    for idx, answer in enumerate(answers):
+        if answer == math1[idx%len(math1)]:
+            score[0] += 1
+        if answer == math2[idx%len(math2)]:
+            score[1] += 1
+        if answer == math3[idx%len(math3)]:
+            score[2] += 1
+
+    for idx, s in enumerate(score):
+        if s == max(score):
+            result.append(idx+1)
+    
+    return result
+
+
+
+
