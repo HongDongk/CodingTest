@@ -22,5 +22,4 @@ def solution(numbers):
     for i in result:
         if sosu(i):
             answer+=1
-
     return answer
