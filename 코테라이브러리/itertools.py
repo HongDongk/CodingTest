@@ -21,4 +21,10 @@ ex = [1,2,3]
 
 answer = list(product(ex , repeat=2)) # [(1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3)]
 
+# 중복조합
+from itertools import combinations_with_replacement
+
+ex = [1,2,3]
+
+answer = list(combinations_with_replacement(ex, 2)) # [(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)]
 
