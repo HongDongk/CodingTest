@@ -37,7 +37,7 @@ def solution(begin, target, words):
         for i in range(len(words)):
             if visited[i] == False and check(word,words[i]):
                 visited[i] = True
-                d3fs(words[i],cnt+1)
+                dfs(words[i],cnt+1)
                 visited[i] = False
     
     dfs(begin,0)
