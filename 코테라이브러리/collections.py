@@ -14,6 +14,8 @@ from collections import Counter
 
 answer = Counter([1, 1, 2, 3, 3])
 
+# Counter({1: 2, 3 : 2, 2 : 1})  --> answer 출력시 값
+
 answer[1] # 배열안에서 1이 몇개인지 파악 - 2
 answer[2] # 배열안에서 2가 몇개인지 파악 - 1
 
