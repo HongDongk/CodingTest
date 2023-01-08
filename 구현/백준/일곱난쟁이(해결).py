@@ -6,17 +6,13 @@
 
 from itertools import combinations
 
-dwarf = []
+nazengi = []
 for i in range(9):
-    dwarf.append(int(input()))
+    nazengi.append(int(input()))
 
-seven = list(combinations(dwarf, 7))
-
-for i in seven:
+answer = list(combinations(nazengi ,7))
+for i in answer:
     if sum(i) == 100:
-        ans = list(i)
-        break
-ans.sort()  
-   
-for i in ans:
+        result = sorted(i)
+for i in result:
     print(i)
