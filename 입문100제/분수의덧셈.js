@@ -1,3 +1,5 @@
+// 최대공약수 구하는방법
+
 function GCD(a,b){
     return(a%b? GCD(b,a%b):b)
 }
