@@ -9,6 +9,5 @@ function solution(num_list) {
 
 // 문자열뒤집기
 function solution(my_string) {
-    var answer = '';
     return my_string.split('').reverse().join('');
 }
