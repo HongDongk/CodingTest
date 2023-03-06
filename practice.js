@@ -1,3 +1,5 @@
-a= "onetwoonetwothree"
+let a= [1,2,1,2];
 
- console.log(a.split("one").join(1));
+[a[0], a[1]] = [a[1], a[0]]
+
+console.log(a);
