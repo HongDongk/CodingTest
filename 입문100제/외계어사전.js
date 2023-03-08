@@ -1,4 +1,5 @@
 // forEach 사용방법 - array.forEach((a) => {})
+// 특이점 - 다른 for문과 달리 forEach구문안에서 return 값을 쓸수 없다!!
 
 function solution(spell, dic) {
     let answer = [];
