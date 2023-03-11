@@ -2,32 +2,32 @@
 
 function solution(maps) {
     let answer = 1;
-    let visited = maps;
-    let queue = [];
-    const dx = [-1, 1, 0, 0];
-    const dy = [0, 0, -1, 1];
-    const n = maps.length;
-    const m = maps[0].length;
+    let visited = Array(maps.length).fill().map(()=> Array(maps[0].length).fill(1));
+    let que = [[0,0]];
+    const maxx = maps.length;
+    const maxy = maps[0].length;
     
-    queue.push([0, 0]);
-    visited[0][0] = 0;
+    const dx = [-1,1,0,0];
+    const dy = [0,0,-1,1];
+
+    while(que.length > 0){
+        let size = que.length;
     
-    while(queue.length > 0) {
-        let size = queue.length;
-        
         for(let i = 0; i < size; i++) {
-            let [x, y] = queue.shift();
+            let [x,y] = que.shift();
             
-            for(let j = 0; j < 4; j++) {
-                let nx = x + dx[j];
-                let ny = y + dy[j];
+            for(let j=0; j<4; j++){
+                let mx = x + dx[j];
+                let my = y + dy[j];
                 
-                if(nx >= 0 && nx < n && ny >= 0 && ny < m && visited[nx][ny] === 1) {
-                    if(nx == n - 1 && ny == m - 1) {
-                        return answer+1;
+                if (mx>=0 && my>=0 && mx<maxx && my<maxy && maps[mx][my] === 1 && visited[mx][my] === 1){
+                    if(mx === maxx - 1 && my === maxy - 1){
+                        return answer + 1;
                     }
-                    queue.push([nx, ny]);
-                    visited[nx][ny] = 0;
+                    else{
+                        que.push([mx,my]);
+                        visited[mx][my] = 0;
+                    }
                 }
             }
         }
