@@ -1,4 +1,4 @@
-// 조합 - DFS(재귀함수)
+// 모든조합 - DFS(재귀함수)
 
 function solution(numbers, target) {
     let answer = 0;
