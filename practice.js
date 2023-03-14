@@ -1,6 +1,17 @@
-const array1 = [1, 2, 3, 4];
+function getPermutations(arr, selectNumber) {
+    const results = [];
+    if (selectNumber === 1) return arr.map((a) => [a]); 
 
-let initialValue = 0; // 초기값
-array1.forEach((item) => initialValue += item);
+    arr.forEach((fixed, index, origin) => {
+      const rest = [...origin.slice(0, index), ...origin.slice(index+1)] //fixed값 빼고 만들어진배열
+      const permutations = getPermutations(rest, selectNumber - 1); // rest배열에서 하나작게 뽑기
+      const attached = permutations.map((a) => [fixed, ...a]); // fixed값과 재귀함수돌린값로 만들어진배열
+      results.push(...attached); 
+    });
 
-console.log(initialValue);
+    return results; 
+}
+
+
+
+console.log(getPermutations(['a','b','c'] , 3));
