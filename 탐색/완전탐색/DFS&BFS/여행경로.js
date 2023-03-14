@@ -1,4 +1,4 @@
-// 모든조합 - BFS
+// 모든조합 - DFS(재귀함수)
 
 function solution(tickets) {
     let answer = [];

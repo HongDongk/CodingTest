@@ -1,12 +1,6 @@
-    const tickets = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]];
-    tickets.sort(); // 글자순 정렬
-    
-    console.log(tickets);
+const array1 = [1, 2, 3, 4];
 
-    [["ATL","ICN"],["ATL","SFO"],["ICN","ATL"],["ICN","SFO"],["SFO","ATL"]]
+let initialValue = 0; // 초기값
+array1.forEach((item) => initialValue += item);
 
-    ["ICN","SFO","ATL","ICN","ATL","SFO"]
-    ["ICN","SFO","ATL","ICN","ATL","SFO"]
-    ["ICN","ATL","SFO","ATL","ICN","SFO"]
-
-    ["ICN","ATL","ICN","SFO","ATL","SFO"]
+console.log(initialValue);
