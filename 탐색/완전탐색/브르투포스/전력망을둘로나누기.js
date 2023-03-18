@@ -1,29 +1,28 @@
 //트리순회
 
 function solution(n, wires) {
-    const links = {}; 
-    let x = [];
-    let answer = 100; 
+    let links= {};
+    let answer = 100;
     
-    wires.map((w) => { 
-        const [a, b] = w;
-        if(!links[a]) links[a] = [];
-        if(!links[b]) links[b] = [];
-        links[a].push(b);
-        links[b].push(a);
-    })
+    wires.map((a) => {
+        if (!links[a[0]]) links[a[0]] = [];
+        if (!links[a[1]]) links[a[1]] = [];
+        links[a[0]].push(a[1]);
+        links[a[1]].push(a[0]);
+    });
     
-    function searchTree(root, exception) {
+    function solution(x,y) {
         let count = 0;
-        const array = [root];
-        const visited = [];
-        visited[root] = true;
-        while(array.length){
-            const cur = array.pop();
-            links[cur].map(next => {
-                if(next !== exception && !visited[next]){
-                    visited[next] = true;
-                    array.push(next);
+        let visited = [];
+        let array = [x];
+        visited[x] = true;
+        
+        while(array.length>0){
+            const next = array.pop();
+            links[next].map((a) => {
+                if(a !== y && !visited[a]){
+                    visited[a] = true;
+                    array.push(a);
                 }
             })
             count++;
@@ -31,10 +30,10 @@ function solution(n, wires) {
         return count;
     }
     
-    wires.map((w) => { 
-        const [a, b] = w;
-        const dif = Math.abs(searchTree(a,b) - searchTree(b,a));
-        answer = answer > dif ? dif : answer;
-    })
+    wires.map((a) => {
+        const count = Math.abs(solution(a[0],a[1]) - solution(a[1],a[0]));
+        answer = answer > count ? count : answer; 
+    });
+    
     return answer;
 }
