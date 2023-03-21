@@ -1,3 +1,5 @@
+// splice - 배열을 자르고싶을때 array.splice(시작인덱스, 갯수);
+
 function solution(number, k) {
     const arr = [];
     for (let i = 0; i < number.length; i++) {
