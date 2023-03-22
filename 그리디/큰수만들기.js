@@ -1,5 +1,3 @@
-// splice - 배열을 제거하고싶을때 array.splice(제거할인덱스, 제거할인덱스부터 삭제할 갯수);
-
 function solution(number, k) {
   const arr = [];
   for(let i =0; i < number.length; i++){
@@ -10,7 +8,5 @@ function solution(number, k) {
       arr.push(number[i]);
   }
   
-  arr.splice(arr.length-1,k)
-  
-  return arr.join('');
+  return arr.slice(0, number.length - k).join('');
 }
