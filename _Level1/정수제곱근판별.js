@@ -1,4 +1,4 @@
-// 정수인지아닌지 판별 - Number.isInteger()
+// 정수인지아닌지 판별 - Number.isInteger(n)
 // 제곱근 - Math.sqrt(n)
 
 function solution(n) {
