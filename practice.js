@@ -1,1 +1,3 @@
-console.log('a'<'b');
+const numberregex = /^(a|b)+$/;
+
+console.log(numberregex.test('abaaa'));
