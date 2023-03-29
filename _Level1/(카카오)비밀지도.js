@@ -1,3 +1,9 @@
+// 해결하긴함!!
+// 길이가 n인 배열생성 - new Array(n).fill('')
+// 10진수 2진수로 바꾸기 - a.toString(2)
+// padstart - 특정 값을 채워 기존 스트링을 길이가 n인 스트링으로 만들기 - a.padStart(n,0) 
+// 정규식 
+
 function solution(n, arr1, arr2) {
     let realarr1 = [];
     let realarr2 = [];

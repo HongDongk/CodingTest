@@ -1,1 +1,1 @@
-console.log(isNaN(5))
+console.log('a'<'b');
