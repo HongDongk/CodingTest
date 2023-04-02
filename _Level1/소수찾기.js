@@ -1,3 +1,6 @@
+// 효율성
+// 에라토스테네스의 체 - n까지의 소수의 갯수는 2부터 n까지의 숫자들중에서 2부터 n의 제곱근까지의 배수를 모두 삭제해주면된다.
+
 function solution(n) {
     let answer = 0;
     const arr = new Array(n+1).fill(true); 
