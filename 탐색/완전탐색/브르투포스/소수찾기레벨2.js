@@ -21,8 +21,7 @@ function solution(numbers) {
     function checkPrimeNumber(number){
         if (number < 2) return false;
         for (let i = 2; i <= Math.sqrt(number); i++) {
-            const remainder = number % i;
-            if (remainder === 0) return false;
+            if (number % i === 0) return false;
         }
         return true;
     };
