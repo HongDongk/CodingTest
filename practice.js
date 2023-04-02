@@ -1,4 +1,5 @@
-const array1 = [1, 2, 3];
+const array1 = [1, 2, 2, 3, 3];
 
-console.log(array1.reverse());
-console.log(array1);
+const setarray = new Set(array1);
+
+console.log(setarray); 
