@@ -1,3 +1,5 @@
-const string1 = "CoderDuck CoderDuck is stupid";
+function solution(babbling) {
+  return babbling.replace(/(a)\1+/g, "f");
+}
 
-console.log(string1.replace("/CoderDuck/g", "He")); // 첫번째 문자열만 바꿈
+console.log(solution("adaaaaa"));
