@@ -1,3 +1,5 @@
+// 문제를 잘읽고 분석필요
+
 function solution(board, moves) {
   let answer = 0;
   let stack = [];
