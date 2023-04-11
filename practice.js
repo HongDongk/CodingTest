@@ -1,5 +1,5 @@
 function solution(babbling) {
-  return babbling.replace(/(a)\1+/g, "f");
+  return babbling.replace(/(\.)\1+/g, ".");
 }
 
-console.log(solution("adaaaaa"));
+console.log(solution("...sf...s"));
