@@ -1,4 +1,3 @@
-const months = ["Jan", "March", "April", "June"];
+const months = [1, 2, 3, 4];
 
-months.splice(-1); // 뒤에서 2번째인덱스 값부터 삭제
-console.log(months);
+console.log(months.reduce((acc, cur, idx) => (acc += idx), 0));
