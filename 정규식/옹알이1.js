@@ -2,12 +2,11 @@
 // 정규식과 맞는지 안맞는지 확인 : regx.test(word)
 
 function solution(babbling) {
-    var answer = 0;
-    const regex = /^(aya|ye|woo|ma)+$/;
-  
-    babbling.forEach(word => {
-      if (regex.test(word)) answer++;  
-    })
-  
-    return answer;
+  var answer = 0;
+
+  babbling.forEach((word) => {
+    if (/^(aya|ye|woo|ma)+$/g.test(word)) answer++;
+  });
+
+  return answer;
 }
