@@ -1,4 +1,4 @@
-// 합집합, 교집합 구하는 방법
+// 중복을 포함한 합집합, 교집합 구하는 방법
 
 function solution(str1, str2) {
   let array1 = [];
