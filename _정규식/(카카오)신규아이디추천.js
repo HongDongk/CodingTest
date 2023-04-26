@@ -13,7 +13,7 @@ function solution(new_id) {
     .replace(/^\.|\.$/g, "") // 마침표(.)가 처음이나 끝에 위치한다면 제거
     .replace(/^$/, "a") // 빈 문자열이라면, new_id에 "a"를 대입
     .slice(0, 15)
-    .replace(/\.$/, ""); // 6  마침표(.)가 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거
+    .replace(/\.$/, ""); // 마침표(.)가 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거
 
   const len = answer.length;
 

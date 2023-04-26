@@ -1,12 +1,3 @@
-const array1 = [1, 2, 2, 3, 3];
-const array2 = [1, 2, 2, 3, 3, 5];
+const string = "정규식김규식정규식";
 
-console.log(array1.slice(0, -1)); // array1에서 2보다 큰 원소가 있으므로
-
-[
-  ["banana", 3],
-  ["apple", 2],
-  ["rice", 2],
-  ["pork", 2],
-  ["pot", 1],
-];
+console.log(/^(정규식|김규식)+$/g.test(string)); // false
