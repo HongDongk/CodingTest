@@ -1,3 +1,3 @@
-const string = [];
+const string = [0, "sdf"];
 
-console.log(string[-1]); // false
+console.log(string[1]); // false
