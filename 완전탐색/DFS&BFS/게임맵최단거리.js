@@ -12,8 +12,8 @@ function solution(maps) {
     }
 
     for (let i = 0; i < 4; i++) {
-      const nx = cur[0] + dy[i];
-      const ny = cur[1] + dx[i];
+      const nx = cur[0] + dx[i];
+      const ny = cur[1] + dy[i];
 
       if (
         nx >= 0 &&
