@@ -1,3 +1,3 @@
 const a = [23, 3, false];
-
-console.log(a.slice(4));
+a[5] = 10;
+console.log(a[4]);
