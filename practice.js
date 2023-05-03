@@ -1,12 +1,5 @@
-let arrA = [
-  [1, 2, 3],
-  [3, 2, 1],
-];
-let arrB = [...arrA];
+let arrA = [1, 23, 4, 5, 23];
 
-arrA.reverse();
+let k = 3;
 
-console.log(arrA);
-// [1, 2, 3]
-console.log(arrB);
-// [10, 2, 3]
+console.log(arrA.slice(0, k).join(""));
