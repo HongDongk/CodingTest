@@ -12,7 +12,7 @@ function solution(queue1, queue2) {
     if (sum1 === half) {
       return cnt;
     }
-    sum1 = sum1 >= half ? sum1 - q[q1Pointer++] : sum1 + q[q2Pointer++];
+    sum1 = sum1 < half ? sum1 + q[q2Pointer++] : sum1 - q[q1Pointer++];
   }
 
   return -1;
