@@ -1,5 +1,6 @@
 // indexOf()는 한문자의 인덱스 뿐만아니라 문자열의 첫번째 인덱스를 반환해준다 => 'abcd'.indexOf('bc') = 1
 // indexOf(b,2) => 두번째 인덱스부터 시작해 b가 있는 인덱스를 반환
+// 정규식 (/[A-Z]#?/g) => 알파벳이거나 알파벳# 인것을 반환
 
 function solution(m, musicinfos) {
   const arr = musicinfos.map((a) => {
