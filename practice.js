@@ -1,3 +1,3 @@
-let a = [1, 2, 3];
+let a = [1, 2, null];
 
-console.log(!a[4]);
+console.log(a[2]);
