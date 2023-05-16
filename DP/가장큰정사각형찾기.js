@@ -1,4 +1,5 @@
 function solution(board) {
+  // board자체에 값을 기록하는 dp
   let answer = 0;
   const row = board.length;
   const column = board[0].length;
