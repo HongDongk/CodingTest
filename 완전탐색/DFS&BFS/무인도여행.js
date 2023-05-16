@@ -1,3 +1,5 @@
+// DFS(재귀함수)
+
 function solution(maps) {
   let answer = [];
   maps = maps.map((n) => n.split(""));

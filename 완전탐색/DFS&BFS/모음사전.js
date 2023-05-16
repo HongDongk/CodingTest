@@ -1,4 +1,4 @@
-// 재귀함수!!
+// DFS(재귀함수)
 
 function solution(word) {
   let arr = ["A", "E", "I", "O", "U"];
