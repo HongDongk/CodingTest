@@ -1,4 +1,5 @@
-// 두번 BFS(큐) 사용하면 됌
+// BFS(큐)
+// 두번 사용하면 됌
 
 function bfs(start, arr, target) {
   let answer = 0;

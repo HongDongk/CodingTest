@@ -1,4 +1,11 @@
-const set = new Set();
+const guys = [
+  { name: "YD", money: 500000 },
+  { name: "Bill", money: 400000 },
+  { name: "Andy", money: 300000 },
+  { name: "Roky", money: 200000 },
+];
 
-set.add(1).add(2).add(2); // 이렇게도 사용가능한데 중복된 값은 무시된다.
-console.log(set); // Set(2) {1, 2}
+// money를 300000 이상 가진 name이 YD인 사람을 찾는다.
+const rich = guys.filter((man) => man.money < 300000);
+
+console.log(rich);
