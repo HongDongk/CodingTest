@@ -1,5 +1,5 @@
 // BFS(큐)
-// 특별한 이동방식
+// 특별한 이동방식(어려움)
 
 function solution(board) {
   let answer = 0;
