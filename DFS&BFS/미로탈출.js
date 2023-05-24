@@ -5,7 +5,6 @@ function bfs(start, arr, target) {
   const dx = [-1, 1, 0, 0];
   const dy = [0, 0, -1, 1];
   const queue = [start];
-  arr[start[0]][start[1]] = "X";
 
   while (queue.length > 0) {
     let size = queue.length;
