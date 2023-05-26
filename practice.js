@@ -1,5 +1,8 @@
-var arr1 = [1, 2, 3];
-var arr2 = [4, 5, 6];
-arr1.push(arr2);
+let keypad = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  ["*", 0, "#"],
+];
 
-console.log(arr1); // [1,2,3,4,5,6]
+console.log(keypad.indexOf(4));
