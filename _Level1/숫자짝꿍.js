@@ -1,3 +1,5 @@
+// 시간초과!! splice의 시간복잡도
+
 function solution(X, Y) {
   let answer = "";
   X = X.split("");
