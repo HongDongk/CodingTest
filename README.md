@@ -1,6 +1,6 @@
 # 💻 CodingTest
 
-JavaScript 코딩테스트 연습
+JavaScript 코딩테스트 준비
 
 - 프로그래머스 입문100제
 - 프로그래머스 Level 1
