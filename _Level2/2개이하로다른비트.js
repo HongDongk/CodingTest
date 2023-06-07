@@ -1,18 +1,13 @@
-// 2진수를 10진수로 parseInt(n,2);
+// 짝수일때와 홀수일때로 나눠서 풀기
+// 이진수에 대한 이해
 
 function solution(numbers) {
-  let answer = [];
-
-  function f(x) {
-    if (x % 2 === 0) return x + 1;
-    let bit = "0" + x.toString(2);
-    let idx = bit.lastIndexOf("0");
-    return parseInt(bit.slice(0, idx) + "10" + bit.slice(idx + 2), 2);
+  function findmin(n) {
+    if (n % 2 === 0) return n + 1;
+    n = "0" + n.toString(2);
+    let idx = n.lastIndexOf("0");
+    return parseInt(n.slice(0, idx) + "10" + n.slice(idx + 2), 2);
   }
 
-  for (let number of numbers) {
-    answer.push(f(number));
-  }
-
-  return answer;
+  return numbers.map((a) => findmin(a));
 }
