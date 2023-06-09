@@ -1,3 +1,5 @@
+// 스택활용
+
 function solution(bridge_length, weight, truck_weights) {
   let answer = 0;
   let on_bridge = [];
