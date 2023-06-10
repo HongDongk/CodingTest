@@ -1,15 +1,15 @@
-// 이중for문하면 시간초과 => 스택으로 해결! - 어려움
+// 시간초과 => 스택으로 해결!
 
 function solution(numbers) {
   let answer = new Array(numbers.length).fill(-1);
-  let stack = [];
+  let idxs = [];
 
   for (let i = 0; i < numbers.length; i++) {
-    while (stack && numbers[stack[stack.length - 1]] < numbers[i]) {
-      answer[stack.pop()] = numbers[i];
+    while (idxs && numbers[idxs[idxs.length - 1]] < numbers[i]) {
+      answer[idxs.pop()] = numbers[i];
     }
-    stack.push(i);
+    idxs.push(i);
   }
 
-  return stack;
+  return answer;
 }
