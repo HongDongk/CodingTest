@@ -1,4 +1,5 @@
-// 시간초과! 해결방법
+// for문 안에서 계속 Set(객체)을 생성한다면, 시간초과난다!
+// 객체를 이용해 해결
 
 function solution(topping) {
   let a = new Set();
