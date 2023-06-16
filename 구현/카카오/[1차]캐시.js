@@ -1,4 +1,7 @@
-// 문제를 잘읽자!!
+// 테스트케이스 통과실패!!
+// cache = 3
+// input_list = ["1","2","1","1","1","1"]
+// output = 14
 
 function solution(cacheSize, cities) {
   cities = cities.map((a) => a.toLowerCase());
