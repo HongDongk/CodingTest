@@ -1,3 +1,5 @@
+// DFS(재귀함수)
+
 function solution(users, emoticons) {
   const salePercent = [10, 20, 30, 40];
   let cases = [];
