@@ -2,6 +2,7 @@
 // cache = 3
 // input_list = ["1","2","1","1","1","1"]
 // output = 14
+// 주의필요!!
 
 function solution(cacheSize, cities) {
   cities = cities.map((a) => a.toLowerCase());

@@ -1,11 +1,13 @@
-// 어렵다,,, 상당히,, 이빠이
+// 하나하나 차근히 구현하기!
 
 function solution(m, n, board) {
   board = board.map((a) => a.split(""));
+  let answer = 0;
 
-  //1. 배열에서 지워질 블록의 인덱스를 구해 arr안에 넣는다.
   while (true) {
     let arr = [];
+
+    //1. 배열에서 지워질 블록의 인덱스를 구해 arr안에 넣는다.
     for (let i = 0; i < m - 1; i++) {
       for (let j = 0; j < n - 1; j++) {
         if (
@@ -19,13 +21,9 @@ function solution(m, n, board) {
       }
     }
 
-    // 답을 구하는 로직 : 깨질 블록이 없다면 0인 개수를 세고 리턴한다.
     if (arr.length === 0) {
-      return board
-        .map((a) => {
-          return a.filter((b) => b === 0).length;
-        })
-        .reduce((a, b) => a + b, 0);
+      board.map((a) => (answer += a.filter((b) => b === 0).length));
+      break;
     }
 
     // 2. 배열에서 지워질 블록을 0으로 바꾼다.
@@ -40,17 +38,21 @@ function solution(m, n, board) {
 
     // 3. 깨진 블록을 없애고 위에서 블록을 당겨온다.
     for (let i = m - 1; i > 0; i--) {
-      if (!board[i].some((a) => !a)) continue;
+      if (board[i].filter((a) => a !== 0).length === 0) continue; // 시간초과 방지용
 
       for (let j = 0; j < n; j++) {
-        for (let k = i - 1; k >= 0 && !board[i][j]; k--) {
-          if (board[k][j]) {
-            board[i][j] = board[k][j];
-            board[k][j] = 0;
-            break;
+        if (board[i][j] === 0) {
+          for (let k = i - 1; k >= 0; k--) {
+            if (board[k][j] !== 0) {
+              board[i][j] = board[k][j];
+              board[k][j] = 0;
+              break;
+            }
           }
         }
       }
     }
   }
+
+  return answer;
 }
