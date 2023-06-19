@@ -1,13 +1,13 @@
 function solution(s) {
-  const len = s.length;
-  let answer = [s];
+  if (s.length === 1) return 1; // 문자열이 1자일때 예외처리
+  let answer = [];
 
   for (let i = 1; i <= s.length / 2; i++) {
     let text = "";
     let cnt = 1;
     let temp = s.slice(0, i);
 
-    for (let j = i; j < len; j += i) {
+    for (let j = i; j < s.length; j += i) {
       if (temp === s.slice(j, j + i)) {
         cnt++;
       } else {
