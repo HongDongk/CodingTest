@@ -1,33 +1,35 @@
-// 조합 이욯하기
+// 조합
 
 function solution(orders, course) {
   let answer = [];
-  let count = {};
   let result = [];
+  let count = {};
 
   function getCombinations(arr, selectNumber) {
     const results = [];
+
     if (selectNumber === 1) return arr.map((a) => [a]);
-    arr.forEach((fixed, index, origin) => {
-      const rest = origin.slice(index + 1);
+
+    arr.forEach((fixed, index) => {
+      const rest = arr.slice(index + 1);
       const combinations = getCombinations(rest, selectNumber - 1);
       const attached = combinations.map((a) => [fixed, ...a]);
       results.push(...attached);
     });
+
     return results;
   }
 
   for (let i of course) {
-    for (let j of orders) {
-      if (j.length >= i) {
-        getCombinations(j.split(""), i).map((a) =>
-          answer.push(a.sort().join(""))
+    orders.map((a) => {
+      if (a.length >= i)
+        getCombinations(a.split(""), i).map((a) =>
+          result.push(a.sort().join(""))
         );
-      }
-    }
+    });
   }
 
-  answer.map((a) => {
+  result.map((a) => {
     count[a] = count[a] ? count[a] + 1 : 1;
   });
 
@@ -39,12 +41,11 @@ function solution(orders, course) {
         max = max >= count[key] ? max : count[key];
       }
     }
+
     for (let key in count) {
-      if (key.length === a && count[key] === max) {
-        result.push(key);
-      }
+      if (key.length === a && count[key] === max) answer.push(key);
     }
   });
 
-  return result.sort();
+  return answer.sort();
 }
