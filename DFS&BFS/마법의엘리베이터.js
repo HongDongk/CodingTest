@@ -10,7 +10,9 @@ function solution(storey) {
     } else {
       let res = num % 10;
 
+      // 층을 내려갔을 경우
       dfs(Math.floor(num / 10), counter + res);
+      // 층을 올라갔을 경우
       dfs(Math.floor(num / 10) + 1, counter + 10 - res);
     }
   }
