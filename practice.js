@@ -1,3 +1,8 @@
-const a = { 1: "ㅅ발", 2: "ㅅㅅ발" };
+const a = [
+  [1, 2],
+  [1, 2, 3],
+];
 
-console.log(Object.keys(a));
+let t = a.slice();
+t.splice(0, 1);
+console.log(a);
