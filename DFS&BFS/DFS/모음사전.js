@@ -1,5 +1,7 @@
 // DFS(재귀함수)
 
+// answer = {"":0,"A":1,"AA":2,"AAA":3,"AAAA":4,"AAAAA":5,"AAAAE":6,"AAAAI":7,"AAAAO":8,"AAAAU":9,"AAAE":10,"AAAEA":11,"AAAEE":12,"AAAEI":13}
+
 function solution(word) {
   let arr = ["A", "E", "I", "O", "U"];
   let idx = 0;
