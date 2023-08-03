@@ -8,9 +8,9 @@ function solution(n) {
   function dfs(n, start, mid, end) {
     if (n === 1) answer.push([start, end]);
     else {
-      dfs(n - 1, start, end, mid);
-      answer.push([start, end]);
-      dfs(n - 1, mid, start, end);
+      dfs(n - 1, start, end, mid); // 1
+      answer.push([start, end]); // 2
+      dfs(n - 1, mid, start, end); // 3
     }
   }
 
