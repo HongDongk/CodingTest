@@ -2,7 +2,7 @@
 
 function solution(k, dungeons) {
   let answer = 0;
-  let visited = new Array(dungeons.length).fill(false);
+  let visited = new Array(dungeons.length).fill(false); // 방문했는지 안했는지 확인필요!
 
   function dfs(power, cnt) {
     answer = Math.max(answer, cnt);
