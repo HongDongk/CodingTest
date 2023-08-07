@@ -4,11 +4,11 @@ function solution(maps) {
   let answer = [];
   maps = maps.map((n) => n.split(""));
 
-  const dx = [1, 0, -1, 0];
-  const dy = [0, 1, 0, -1];
+  let dx = [1, 0, -1, 0];
+  let dy = [0, 1, 0, -1];
 
-  function dfs(x, y, num) {
-    let sum = Number(num);
+  function dfs(x, y, start) {
+    let sum = Number(start);
 
     for (let i = 0; i < 4; i++) {
       const nx = x + dx[i];
@@ -26,7 +26,7 @@ function solution(maps) {
   }
 
   for (let i = 0; i < maps.length; i++) {
-    for (let j = 0; j < maps[0].length; j++) {
+    for (let j = 0; j < maps[i].length; j++) {
       if (maps[i][j] !== "X") {
         const start = maps[i][j];
         maps[i][j] = "X";
@@ -35,5 +35,5 @@ function solution(maps) {
     }
   }
 
-  return answer.length ? answer.sort((a, b) => a - b) : [-1];
+  return answer.length === 0 ? [-1] : answer.sort((a, b) => a - b);
 }
