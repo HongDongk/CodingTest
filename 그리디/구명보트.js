@@ -1,4 +1,5 @@
 // 합쳐서 조건보다 작은 값을 찾을 때는 배열의 인덱스를 활용해본다!
+// 조건 잘처리하기
 
 function solution(people, limit) {
   let answer = 0;
