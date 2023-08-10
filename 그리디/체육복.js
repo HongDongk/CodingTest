@@ -1,19 +1,22 @@
 function solution(n, lost, reserve) {
-  let arr = new Array(n).fill(1);
+  let students = {};
 
-  lost.map((a) => arr[a - 1]--);
-  reserve.map((a) => arr[a - 1]++);
+  for (let i = 1; i <= n; i++) {
+    students[i] = 1;
+  }
 
-  // 여기부분 조심
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i - 1] >= 2 && arr[i] === 0) {
-      arr[i - 1]--;
-      arr[i]++;
-    } else if (arr[i - 1] === 0 && arr[i] >= 2) {
-      arr[i]--;
-      arr[i - 1]++;
+  lost.map((a) => students[a]--);
+  reserve.map((a) => students[a]++);
+
+  for (let i = 2; i <= n; i++) {
+    if (students[i - 1] > 1 && students[i] === 0) {
+      students[i - 1]--;
+      students[i]++;
+    } else if (students[i - 1] === 0 && students[i] > 1) {
+      students[i]--;
+      students[i - 1]++;
     }
   }
 
-  return arr.filter((a) => a >= 1).length;
+  return Object.values(students).filter((a) => a > 0).length;
 }
