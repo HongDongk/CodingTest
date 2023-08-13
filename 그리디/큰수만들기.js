@@ -10,6 +10,6 @@ function solution(number, k) {
     arr.push(number[i]);
   }
 
-  // 숫자가 모두 같을 때 조건처리(number = 777)
+  // 숫자가 모두 같을 때 조건처리(777, 8888)
   return arr.slice(0, number.length - k).join("");
 }
