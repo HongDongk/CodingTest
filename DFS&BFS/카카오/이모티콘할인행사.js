@@ -6,6 +6,7 @@ function solution(users, emoticons) {
   let arr = [];
   let result = [0, 0];
 
+  // 이모티콘이 할인될 수 있는 모든 경우의 수 구하기(중복을 포함한순열구하기)
   function dfs(depth) {
     if (depth === emoticons.length) {
       cases.push([...arr]);
@@ -19,6 +20,7 @@ function solution(users, emoticons) {
 
   dfs(0);
 
+  // 하나의 할인 케이스에대한 결과값구하기
   cases.map((a) => {
     let emoticonPlus = 0;
     let sumPrice = 0;
@@ -39,6 +41,7 @@ function solution(users, emoticons) {
       else sumPrice += price;
     });
 
+    // 결과값 result에 집어넣어 비교하여 답 도출
     if (emoticonPlus > result[0]) {
       result[0] = emoticonPlus;
       result[1] = sumPrice;
