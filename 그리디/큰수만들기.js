@@ -1,4 +1,5 @@
 // 스택과 그리디 사용하기
+// while사용 주의 !!
 
 function solution(number, k) {
   const arr = [];
