@@ -1,5 +1,5 @@
 // 모든조합 - DFS(재귀함수)
-// 코드 순서 틀렷음(count < numbers.length)부터 해줘야됌
+// 코드 순서 틀렷음(count < numbers.length)조건부터 해줘야됌
 
 function solution(numbers, target) {
   let answer = 0;
@@ -8,10 +8,8 @@ function solution(numbers, target) {
     if (count < numbers.length) {
       dfs(count + 1, value + numbers[count]);
       dfs(count + 1, value - numbers[count]);
-    } else {
-      if (value === target) {
-        answer++;
-      }
+    } else if (n === numbers.length) {
+      if (value === target) answer++;
     }
   }
 
