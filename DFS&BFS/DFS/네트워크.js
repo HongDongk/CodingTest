@@ -13,7 +13,7 @@ function solution(n, computers) {
     }
   }
 
-  for (let i = 0; i < computers.length; i++) {
+  for (let i = 0; i < n; i++) {
     if (visited[i] === false) {
       dfs(i);
       answer += 1;
