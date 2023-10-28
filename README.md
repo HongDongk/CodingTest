@@ -37,3 +37,19 @@ arr.sort((a, b) => {
   if(a < b) return -1;
 });
 ```
+
+### 3. 소수의 갯수
+
+- **특정 수 제곱근 이하까지 나누면서 확인!!**
+
+```javaScript
+function sosu(k){
+  if(k<=1) return false;
+  for(let i =2; i<=Math.sqrt(k); i++){
+    if(k%i === 0) return false;
+  }
+        
+  return true;
+}
+```
+
