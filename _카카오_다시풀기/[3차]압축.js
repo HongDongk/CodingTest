@@ -42,7 +42,7 @@ function solution(msg) {
     }
   }
 
-  if (temp) answer.push(words.indexOf(temp) + 1);
+  if (temp.length>0) answer.push(words.indexOf(temp) + 1);
 
   return answer;
 }
