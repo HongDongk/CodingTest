@@ -1,5 +1,6 @@
 // 모든조합 - DFS(재귀함수)
 // 값을 배열에 다 넣어서 Math.max하면 시간초과남
+// 해결, 인자로 n을 넘겨주면 좀 더 쉽게 답을 구할 수 잇다!
 
 function solution(k, dungeons) {
   let answer = 0;

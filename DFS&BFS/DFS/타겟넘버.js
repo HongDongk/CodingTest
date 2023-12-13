@@ -1,19 +1,18 @@
-// 모든조합 - DFS(재귀함수)
-// 코드 순서 틀렷음(count < numbers.length)조건부터 해줘야됌
-
 function solution(numbers, target) {
   let answer = 0;
+  let visited = new Array(numbers.length).fill(false);
 
-  function dfs(count, value) {
-    if (count < numbers.length) {
-      dfs(count + 1, value + numbers[count]);
-      dfs(count + 1, value - numbers[count]);
-    } else if (n === numbers.length) {
-      if (value === target) answer++;
+  function DFS(count, summ) {
+    if (count === numbers.length) {
+      if (summ === target) answer++;
+      else return;
+    } else {
+      DFS(count + 1, summ + numbers[count]);
+      DFS(count + 1, summ - numbers[count]);
     }
   }
 
-  dfs(0, 0);
+  DFS(0, 0);
 
   return answer;
 }
