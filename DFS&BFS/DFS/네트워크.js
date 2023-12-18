@@ -6,17 +6,18 @@ function solution(n, computers) {
 
   function dfs(i) {
     visited[i] = true;
-    for (let j = 0; j < computers[i].length; j++) {
+    for (let j = 0; j < n; j++) {
       if (visited[j] === false && computers[i][j] === 1) {
         dfs(j);
       }
     }
   }
 
+  // 재귀를 돌린횟수가 정답!!
   for (let i = 0; i < n; i++) {
     if (visited[i] === false) {
       dfs(i);
-      answer += 1;
+      answer++;
     }
   }
 
