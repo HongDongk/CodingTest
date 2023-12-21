@@ -6,7 +6,7 @@
 function solution(n) {
   let answer = [];
   function dfs(n, start, mid, end) {
-    if (n === 1) answer.push([start, end]);
+    if (n === 1) answer.push([start, end]); // 하나 남았을 때!
     else {
       dfs(n - 1, start, end, mid); // 1
       answer.push([start, end]); // 2
