@@ -1,23 +1,14 @@
-// 합쳐서 조건보다 작은 값을 찾을 때는 배열의 인덱스를 활용해본다!
-// 조건 잘처리하기
+// 쉬운문제
 
 function solution(people, limit) {
   let answer = 0;
-  people.sort((a, b) => b - a);
-  let a = 0;
-  let b = people.length - 1;
+  people.sort((a, b) => a - b);
 
-  while (a < b) {
-    if (people[a] + people[b] > limit) {
-      a++;
-    } else {
-      a++;
-      b--;
-    }
+  while (people.length) {
+    let heavy = people.pop();
+    if (heavy + people[0] <= limit) people.shift();
     answer++;
   }
-
-  if (a === b) answer++; // 한명 남았을 때 1 추가
 
   return answer;
 }

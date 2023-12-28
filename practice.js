@@ -1,13 +1,22 @@
-let newArr = [0, 1]; //0번째 1번째 요소는 고정
+function solution(N, number) {
+  let dp = new Array(8).fill().map((a) => new Set());
 
-    function fibonacci(n){
-        if (newArr[n] !== undefined){ 
-            return newArr[n]; //이미 있는 건 그대로 리턴
+  for (let i = 0; i < 8; i++) {
+    dp[i].add(Number(N.toString().repeat(i + 1)));
+    for (let j = 0; j < i; j++) {
+      for (let arg1 of dp[j]) {
+        for (let arg2 of dp[i - j - 1]) {
+          dp[i].add(arg1 + arg2);
+          dp[i].add(arg1 - arg2);
+          dp[i].add(arg1 * arg2);
+          dp[i].add(arg1 / arg2);
         }
-        newArr[n] = fibonacci(n - 1) + fibonacci(n - 2); // 없는 건 새로 만들어서 저장!!!
-        return newArr[n];
-    };
+      }
+    }
+    // if (dp[i].has(number)) return i + 1;
+  }
 
-    fibonacci(5);
+  return dp;
+}
 
-console.log(newArr);
+console.log(solution(5, 12));
