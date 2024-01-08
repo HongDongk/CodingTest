@@ -9,7 +9,9 @@ function solution(storey) {
       answer = count;
     } else {
       let res = current % 10;
+      // 내려갈때
       dfs(Math.floor(current / 10), count + res);
+      // 올라갈때 
       dfs(Math.floor(current / 10) + 1, count + 10 - res);
     }
   }
