@@ -13,7 +13,6 @@ function solution(n, computers) {
     }
   }
 
-  // 재귀를 돌린횟수가 정답!!
   for (let i = 0; i < n; i++) {
     if (visited[i] === false) {
       dfs(i);
