@@ -1,5 +1,3 @@
-// 네트워크 - DFS(재귀함수)
-
 function solution(n, computers) {
   let visited = new Array(n).fill(false);
   let answer = 0;
