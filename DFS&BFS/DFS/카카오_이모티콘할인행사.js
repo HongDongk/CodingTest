@@ -1,50 +1,55 @@
-// DFS보다 check함수 구현하는게 더 오래걸림...
+// 시간 오래걸림 + 문제 이해하는데 오래걸림
+
 function solution(users, emoticons) {
-  let discount = [ 10, 20, 30, 40 ];
-  let temp = [];
-  let discountinfo = [];
-  let maxplus = 0;
-  let maxsum = 0;
-  
-  function check(prices, discounts){
-      let summ = 0;
-      let emoticonplus = 0;
-      for(let user of users){
-          let total = 0;
-          for(let i =0; i<prices.length; i++){
-              if(discounts[i] >= user[0]){
-                  if(total+prices[i] >= user[1]){  // 일정금액 이상이면 플러스가입수 1증가시키고 그 사용자 구매금액 초기화 
-                      emoticonplus+=1;
-                      total = 0;
-                      break;
-                  }
-                  total += prices[i]
-              }
-          }
-          summ += total;
+  let answer = [0, 0];
+  let discount = [10, 20, 30, 40];
+  let temp = new Array(emoticons.length).fill(false);
+  let permutation = [];
+
+  // 할인율에 대한 중복 순열구하기
+  function DFS(L) {
+    if (L === emoticons.length) {
+      permutation.push(temp.slice());
+    } else {
+      for (let i = 0; i < 4; i++) {
+        temp[L] = discount[i];
+        DFS(L + 1);
       }
-      if(emoticonplus > maxplus){
-          maxplus = emoticonplus;
-          maxsum = summ;
-      }else if(emoticonplus === maxplus && summ>maxsum){
-          maxsum = summ;
-      }
+    }
   }
-  
-  function DFS(L){
-      if(L === emoticons.length){
-          check(temp, discountinfo);
-          return;
-      }
-      for(let d of discount){
-          temp[L] = emoticons[L]*(100-d)/100;
-          discountinfo[L] = d;
-          DFS(L+1);
-      }
-  }
-  
+
   DFS(0);
-  
-  
-  return [maxplus, maxsum];
+
+  for (let arr of permutation) {
+    let emprice = 0;
+    let emplus = 0;
+    for (let user of users) {
+      let temp = 0;
+      let temp2 = 0;
+      let [minper, maxprice] = user;
+
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] >= minper) {
+          temp += ((100 - arr[i]) / 100) * emoticons[i];
+        }
+      }
+
+      if (temp >= maxprice) {
+        temp2 = 1;
+        temp = 0;
+      }
+
+      emprice += temp;
+      emplus += temp2;
+    }
+    if (answer[0] < emplus) {
+      answer = [emplus, emprice];
+    } else if (answer[0] === emplus) {
+      if (answer[1] < emprice) {
+        answer = [emplus, emprice];
+      }
+    }
+  }
+
+  return answer;
 }
