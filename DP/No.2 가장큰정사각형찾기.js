@@ -1,13 +1,11 @@
-function solution(board) {
-  // board자체에 값을 기록하는 dp
-  let answer = 0;
-  const row = board.length;
-  const column = board[0].length;
+// (왼쪽, 왼쪽위대각선, 위쪽의 최솟값) + 1 => 해당 index에서의 최대정사각형넓이
 
+function solution(board) {
+  let answer = 0;
   if (row <= 1 || column <= 1) return 1;
 
-  for (let i = 1; i < row; i++) {
-    for (let j = 1; j < column; j++) {
+  for (let i = 1; i < board.length; i++) {
+    for (let j = 1; j < board[0].length; j++) {
       if (board[i][j] > 0) {
         const up = board[i - 1][j];
         const left = board[i][j - 1];
