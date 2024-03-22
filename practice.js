@@ -1,3 +1,3 @@
-let a = [1, 2, 3];
-
-console.log(a.join(''));
+let dp = new Array(5).fill(Infinity);
+dp[6] = 80;
+console.log(dp);
