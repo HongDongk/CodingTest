@@ -1,3 +1,3 @@
-let dp = new Array(5).fill(Infinity);
-dp[6] = 80;
-console.log(dp);
+const months = ['Jan', 'March', 'April', 'June'];
+
+console.log(months.slice(0, -1));
