@@ -1,7 +1,5 @@
-// 하나하나 차근히 구현하기!
-
 function solution(m, n, board) {
-  board = board.map((a) => a.split(""));
+  board = board.map((a) => a.split(''));
   let answer = 0;
 
   while (true) {
@@ -10,17 +8,13 @@ function solution(m, n, board) {
     //1. 배열에서 지워질 블록의 인덱스를 구해 arr안에 넣는다.
     for (let i = 0; i < m - 1; i++) {
       for (let j = 0; j < n - 1; j++) {
-        if (
-          board[i][j] &&
-          board[i][j] === board[i + 1][j] &&
-          board[i][j] === board[i][j + 1] &&
-          board[i][j] === board[i + 1][j + 1]
-        ) {
+        if (board[i][j] && board[i][j] === board[i + 1][j] && board[i][j] === board[i][j + 1] && board[i][j] === board[i + 1][j + 1]) {
           arr.push([i, j]);
         }
       }
     }
 
+    // 4. 더이상 깨질 블록이 없다면 board에서 0인값의 총갯수 반환
     if (arr.length === 0) {
       board.map((a) => (answer += a.filter((b) => b === 0).length));
       break;
@@ -38,7 +32,7 @@ function solution(m, n, board) {
 
     // 3. 깨진 블록을 없애고 위에서 블록을 당겨온다.
     for (let i = m - 1; i > 0; i--) {
-      if (board[i].filter((a) => a !== 0).length === 0) continue; // 시간초과 방지용
+      if (board[i].filter((a) => a !== 0).length === 0) continue;
 
       for (let j = 0; j < n; j++) {
         if (board[i][j] === 0) {
