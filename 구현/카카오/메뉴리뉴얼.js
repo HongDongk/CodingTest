@@ -1,51 +1,42 @@
-// 조합
-
 function solution(orders, course) {
   let answer = [];
-  let result = [];
-  let count = {};
+  orders = orders.map((a) => a.split(''));
 
-  function getCombinations(arr, selectNumber) {
-    const results = [];
+  // 조합
+  function combi(array, n) {
+    let temp = new Array(n).fill(0);
+    let answer = [];
 
-    if (selectNumber === 1) return arr.map((a) => [a]);
-
-    arr.forEach((fixed, index) => {
-      const rest = arr.slice(index + 1);
-      const combinations = getCombinations(rest, selectNumber - 1);
-      const attached = combinations.map((a) => [fixed, ...a]);
-      results.push(...attached);
-    });
-
-    return results;
-  }
-
-  for (let i of course) {
-    orders.map((a) => {
-      if (a.length >= i)
-        getCombinations(a.split(""), i).map((a) =>
-          result.push(a.sort().join(""))
-        );
-    });
-  }
-
-  result.map((a) => {
-    count[a] = count[a] ? count[a] + 1 : 1;
-  });
-
-  course.map((a) => {
-    let max = 0;
-    for (let key in count) {
-      if (count[key] === 1) continue;
-      if (key.length === a) {
-        max = max >= count[key] ? max : count[key];
+    function DFS(L, m) {
+      if (L === n) {
+        answer.push(temp.slice().sort().join(''));
+      } else {
+        for (let i = m; i < array.length; i++) {
+          temp[L] = array[i];
+          DFS(L + 1, i + 1);
+        }
       }
     }
 
-    for (let key in count) {
-      if (key.length === a && count[key] === max) answer.push(key);
+    DFS(0, 0);
+
+    return answer;
+  }
+
+  for (let i of course) {
+    let temp = {};
+    for (let order of orders) {
+      combi(order, i).map((a) => {
+        if (!temp[a]) temp[a] = 1;
+        else temp[a] += 1;
+      });
     }
-  });
+    let maxx = Math.max(...Object.values(temp));
+    if (maxx < 2) continue;
+    for (const [key, value] of Object.entries(temp)) {
+      if (value >= maxx) answer.push(key);
+    }
+  }
 
   return answer.sort();
 }

@@ -1,3 +1,3 @@
-const months = ['Jan', 'March', 'April', 'June'];
+const string = '규식김규식정규식abc';
 
-console.log(months.slice(0, -1));
+console.log(string.match(/[a-z]/g));
