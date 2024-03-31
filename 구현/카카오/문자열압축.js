@@ -1,11 +1,12 @@
 function solution(s) {
-  if (s.length === 1) return 1; // 문자열이 1자일때 예외처리
+  if (s.length === 1) return 1;
   let answer = [];
 
+  // 절반만 반복가능
   for (let i = 1; i <= s.length / 2; i++) {
-    let text = "";
-    let cnt = 1;
-    let temp = s.slice(0, i);
+    let text = '';
+    let cnt = 1; // 반복된 횟수
+    let temp = s.slice(0, i); // 반복의 기준이되는 문자열
 
     for (let j = i; j < s.length; j += i) {
       if (temp === s.slice(j, j + i)) {
