@@ -1,37 +1,36 @@
 function solution(expression) {
-  let answer = [];
+  let answer = 0;
 
   function calculator(a, b, oper) {
-    if (oper === "+") return a + b;
-    if (oper === "*") return a * b;
-    if (oper === "-") return a - b;
+    if (oper === '+') return a + b;
+    if (oper === '*') return a * b;
+    if (oper === '-') return a - b;
   }
 
   const combinations = [
-    ["+", "*", "-"],
-    ["+", "-", "*"],
-    ["*", "+", "-"],
-    ["*", "-", "+"],
-    ["-", "*", "+"],
-    ["-", "+", "*"],
+    ['+', '*', '-'],
+    ['+', '-', '*'],
+    ['*', '+', '-'],
+    ['*', '-', '+'],
+    ['-', '*', '+'],
+    ['-', '+', '*'],
   ];
 
   for (let combination of combinations) {
-    const numbers = expression.match(/\d+/g).map((a) => Number(a)); // 주어진 숫자
-    const operators = expression.match(/[\*\+\-]/g); // 주어진 연산자
+    let numbers = expression.match(/\d+/g).map((a) => Number(a)); // 숫자종류
+    let operator = expression.match(/\D+/g); // 연산자종류
 
     for (let i of combination) {
-      let idx = operators.indexOf(i);
+      let idx = operator.indexOf(i);
       while (idx !== -1) {
         numbers[idx] = calculator(numbers[idx], numbers[idx + 1], i);
         numbers.splice(idx + 1, 1);
-        operators.splice(idx, 1);
-        idx = operators.indexOf(i);
+        operator.splice(idx, 1);
+        idx = operator.indexOf(i);
       }
     }
-
-    answer.push(Math.abs(numbers[0]));
+    if (answer < Math.abs(...numbers)) answer = Math.abs(...numbers);
   }
 
-  return Math.max(...answer);
+  return answer;
 }
