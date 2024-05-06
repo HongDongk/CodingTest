@@ -1,5 +1,3 @@
-// 베달과 수거 동시에 말고 나눠서 진행한다고 생각하기
-
 function solution(cap, n, deliveries, pickups) {
   let answer = 0;
   let delSum = deliveries.reduce((a, b) => a + b, 0);
