@@ -1,5 +1,3 @@
-// 쉬운문제
-
 function solution(people, limit) {
   let answer = 0;
   people.sort((a, b) => a - b);

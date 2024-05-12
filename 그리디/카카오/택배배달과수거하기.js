@@ -1,3 +1,5 @@
+// 예시에 낚시가 잇음 => 택배는 무조건 최대로 들고가야됌
+
 function solution(cap, n, deliveries, pickups) {
   let answer = 0;
   let delSum = deliveries.reduce((a, b) => a + b, 0);

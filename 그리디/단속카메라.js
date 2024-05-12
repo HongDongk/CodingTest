@@ -1,5 +1,3 @@
-// 쉽게생각하기
-
 function solution(routes) {
   let answer = 0;
   let camera = -30001;
