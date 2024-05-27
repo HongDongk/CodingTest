@@ -5,7 +5,7 @@ function solution(maps) {
   let queue = [[0, 0]];
   maps[0][0] = 0;
 
-  let dx = [-1, 0, 1, 0];
+  let dx = [-1, 0, 1, 0]; // 위, 오른쪽, 아래, 왼쪽
   let dy = [0, 1, 0, -1];
 
   while (queue.length) {
