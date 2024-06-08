@@ -1,39 +1,31 @@
-// BFS(큐)
-// 특별한 이동방식(어려움)
+// 일반 문제와 다르게 방문했던 곳을 장애물로 표시할 수 없음!
 
 function solution(board) {
-  let answer = 0;
-  board = board.map((a) => a.split(""));
   let start = [];
+  board = board.map((a) => a.split(''));
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[0].length; j++) {
+      if (board[i][j] === 'R') start = [i, j];
+    }
+  }
 
-  board.forEach((items, i) => {
-    items.forEach((item, j) => {
-      if (item === "R") start = [i, j];
-    });
-  });
+  let answer = 0;
+  let queue = [start];
+  const dx = [-1, 0, 1, 0];
+  const dy = [0, -1, 0, 1];
 
-  const q = [start];
-  const dx = [-1, 1, 0, 0];
-  const dy = [0, 0, -1, 1];
+  board[start[0]][start[1]] = 'O';
 
-  while (q.length) {
-    const size = q.length;
-
-    for (let i = 0; i < size; i++) {
-      const [x, y] = q.shift();
+  while (queue.length) {
+    let len = queue.length;
+    for (let i = 0; i < len; i++) {
+      let [cx, cy] = queue.shift();
 
       for (let j = 0; j < 4; j++) {
-        let nx = x + dx[j];
-        let ny = y + dy[j];
+        let nx = cx + dx[j];
+        let ny = cy + dy[j];
 
-        // 미끄러지기
-        while (
-          nx >= 0 &&
-          nx < board.length &&
-          ny >= 0 &&
-          ny < board[0].length &&
-          board[nx][ny] !== "D"
-        ) {
+        while (nx >= 0 && nx < board.length && ny >= 0 && ny < board[0].length && board[nx][ny] !== 'D') {
           nx += dx[j];
           ny += dy[j];
         }
@@ -41,13 +33,13 @@ function solution(board) {
         nx -= dx[j];
         ny -= dy[j];
 
-        if (board[nx][ny] === "G") {
+        if (board[nx][ny] === 'G') {
           return answer + 1;
         }
-        // 왜 .으로 안하고 'O'로하는지 이해안됌
-        if (board[nx][ny] !== "O") {
-          board[nx][ny] = "O";
-          q.push([nx, ny]);
+
+        if (board[nx][ny] !== 'O') {
+          board[nx][ny] = 'O';
+          queue.push([nx, ny]);
         }
       }
     }
