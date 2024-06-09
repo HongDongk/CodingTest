@@ -1,3 +1,5 @@
+// DFS
+
 function solution(maps) {
   maps = maps.map((a) => a.split(''));
   let answer = [];

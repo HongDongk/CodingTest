@@ -1,3 +1,5 @@
+// BFS
+
 function solution(begin, target, words) {
   let answer = 0;
   let queue = [begin];

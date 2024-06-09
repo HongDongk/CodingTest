@@ -1,3 +1,4 @@
+// DFS
 // 3중 for문을 사용해도 풀림!
 
 function solution(users, emoticons) {

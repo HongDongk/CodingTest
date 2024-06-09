@@ -1,3 +1,5 @@
+// DFS
+
 function solution(n, computers) {
   let visited = new Array(n).fill(false);
   let answer = 0;

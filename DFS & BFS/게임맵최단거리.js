@@ -1,3 +1,4 @@
+// BFS
 // dx는 y좌표, dy는 x좌표의 이동
 
 function solution(maps) {

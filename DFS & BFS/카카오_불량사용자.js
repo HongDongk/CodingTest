@@ -1,3 +1,5 @@
+// DFS
+
 function solution(user_id, banned_id) {
   let answer = [];
   let check = new Array(user_id.length).fill(false);

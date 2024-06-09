@@ -1,3 +1,5 @@
+// BFS
+
 function bfs(start, arr, target) {
   let answer = 0;
   const dx = [-1, 0, 1, 0];

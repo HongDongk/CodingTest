@@ -1,3 +1,4 @@
+// BFS
 // 일반 문제와 다르게 방문했던 곳을 장애물로 표시할 수 없음!
 
 function solution(board) {
