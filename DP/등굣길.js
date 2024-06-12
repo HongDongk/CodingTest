@@ -4,9 +4,7 @@ function solution(m, n, puddles) {
   let dp = new Array(n).fill().map((a) => new Array(m).fill(0));
   dp[0][0] = 1;
 
-  for (let [x, y] of puddles) {
-    dp[y - 1][x - 1] = -1;
-  }
+  puddles.map((a) => (dp[a[0] - 1][a[1] - 1] = -1));
 
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
