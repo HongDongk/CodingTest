@@ -1,13 +1,15 @@
+// dp테이블 => N을 index만큼 사용하여 표현할 수 있는 수들의 집합
+
 function solution(N, number) {
   let answer = -1;
-  let dp = new Array(8).fill().map((a) => new Set());
+  let dp = new Array(9).fill().map((a) => new Set());
 
-  for (let i = 0; i < 8; i++) {
-    dp[i].add(Number(String(N).repeat(i + 1)));
+  for (let i = 1; i <= 8; i++) {
+    dp[i].add(Number(String(N).repeat(i)));
 
-    for (let j = 0; j < i; j++) {
+    for (let j = 1; j < i; j++) {
       for (let arg1 of dp[j]) {
-        for (let arg2 of dp[i - j - 1]) {
+        for (let arg2 of dp[i - j]) {
           dp[i].add(arg1 + arg2);
           dp[i].add(arg1 - arg2);
           dp[i].add(arg1 * arg2);
@@ -15,10 +17,7 @@ function solution(N, number) {
         }
       }
     }
-    if (dp[i].has(number)) {
-      answer = i + 1;
-      break;
-    }
+    if (dp[i].has(number)) return (answer = i);
   }
 
   return answer;
