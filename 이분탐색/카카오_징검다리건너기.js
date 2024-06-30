@@ -16,7 +16,7 @@ function solution(stones, k) {
       last = mid - 1;
     } else {
       start = mid + 1;
-      answer = start;
+      answer = mid;
     }
   }
 
