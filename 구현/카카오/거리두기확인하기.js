@@ -22,6 +22,7 @@ function solution(places) {
         if (nx >= 0 && nx < 5 && ny >= 0 && ny < 5) {
           if (place[nx][ny] === 'P') return 0; // 거리가 1인 주변에 P가 있을 때
           if (place[nx][ny] === 'O') {
+            // 거리가 1인 위치에 X가 있는 경우는 고려 할 필요없음
             for (let j = 0; j < 4; j++) {
               let nnx = nx + dx[j];
               let nny = ny + dy[j];
