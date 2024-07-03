@@ -17,8 +17,8 @@ function solution(expression) {
   ];
 
   for (let combination of combinations) {
-    let numbers = expression.match(/\d+/g).map((a) => Number(a)); // 숫자종류
-    let operator = expression.match(/\D+/g); // 연산자종류
+    let numbers = expression.match(/\d+/g).map((a) => Number(a)); // 숫자
+    let operator = expression.match(/\D+/g); // 연산자
 
     for (let i of combination) {
       let idx = operator.indexOf(i);
@@ -29,7 +29,7 @@ function solution(expression) {
         idx = operator.indexOf(i);
       }
     }
-    if (answer < Math.abs(...numbers)) answer = Math.abs(...numbers);
+    answer = Math.max(answer, Math.abs(numbers[0]));
   }
 
   return answer;

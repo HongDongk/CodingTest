@@ -1,35 +1,24 @@
 function solution(s) {
-  if (s.length === 1) return 1;
   let answer = [];
 
-  // 절반만 반복가능
-  for (let i = 1; i <= s.length / 2; i++) {
-    let text = '';
-    let cnt = 1; // 반복된 횟수
-    let temp = s.slice(0, i); // 반복의 기준이되는 문자열
-
-    for (let j = i; j < s.length; j += i) {
-      if (temp === s.slice(j, j + i)) {
-        cnt++;
+  for (let i = 1; i <= s.length; i++) {
+    let temp = [];
+    for (let j = 0; j < s.length; j += i) {
+      temp.push(s.slice(j, j + i));
+    }
+    let result = '';
+    let temp2 = '';
+    let count = 1;
+    for (let z = 0; z < temp.length; z++) {
+      temp2 = temp[z];
+      if (temp2 === temp[z + 1]) {
+        count++;
       } else {
-        if (cnt === 1) {
-          text += temp;
-        } else {
-          text += cnt + temp;
-        }
-        cnt = 1;
-        temp = s.slice(j, j + i);
+        count !== 1 ? (result += count + temp2) : (result += temp2);
+        count = 1;
       }
     }
-
-    if (cnt === 1) {
-      text += temp;
-    } else {
-      text += cnt + temp;
-    }
-
-    answer.push(text);
+    answer.push(result.length);
   }
-
-  return Math.min(...answer.map((a) => a.length));
+  return Math.min(...answer);
 }
