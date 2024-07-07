@@ -1,10 +1,15 @@
-function find() {
-  let i = 10;
-  while (false) {
-    return 20;
+function solution(arr, m) {
+  let answer = [];
+  let check = new Array(arr.length).fill(false);
+  let temp = new Array(m).fill(0);
+
+  function DFS(L) {
+    if (L === m) {
+      answer.push(temp.slice());
+    } else {
+    }
   }
 
-  return 1;
+  DFS(L);
+  return answer;
 }
-
-console.log(find());
