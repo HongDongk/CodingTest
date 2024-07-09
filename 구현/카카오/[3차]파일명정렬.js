@@ -1,4 +1,4 @@
-// match 활용!!
+// 정규식
 
 function solution(files) {
   return files.sort((a, b) => {
