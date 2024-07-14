@@ -1,13 +1,42 @@
+// 정규식 사용
 function solution(babbling) {
   let answer = 0;
 
   for (let word of babbling) {
-    if (/(aya|ye|woo|ma)\1+/g.test(word)) continue; // 괄호안에 문자가 단어에서 연속되는 확인
     if (/^(aya|ye|woo|ma)+$/g.test(word)) {
-      // 괄호안에 들어있는 단어로만 구성되있는지 체크
-      answer++;
+      let flg = true;
+      for (let i of can) {
+        if (word.includes(i.repeat(2))) {
+          flg = false;
+          break;
+        }
+      }
+      if (flg) answer++;
+    }
+  }
+  return answer;
+}
+
+// 일반풀이
+function solution(babbling) {
+  const can = ['aya', 'ye', 'woo', 'ma'];
+  let count = 0;
+
+  for (let i = 0; i < babbling.length; i++) {
+    let babble = babbling[i];
+
+    for (let j = 0; j < can.length; j++) {
+      if (babble.includes(can[j].repeat(2))) {
+        break;
+      }
+
+      babble = babble.split(can[j]).join(' ');
+    }
+
+    if (babble.split(' ').join('').length === 0) {
+      count += 1;
     }
   }
 
-  return answer;
+  return count;
 }
