@@ -6,7 +6,7 @@ function solution(n, times) {
 
   while (start <= last) {
     let mid = parseInt((start + last) / 2);
-    const sum = times.reduce((a, b) => a + parseInt(mid / b), 0);
+    const sum = times.map((a) => parseInt(mid / a)).reduce((a, b) => a + b, 0);
     if (sum < n) {
       start = mid + 1;
     } else {
