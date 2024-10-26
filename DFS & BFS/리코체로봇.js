@@ -1,9 +1,8 @@
 // BFS
-// 일반 문제와 다르게 방문했던 곳을 장애물로 표시할 수 없음!
 
 function solution(board) {
   let start = [];
-  board = board.map((a) => a.split(''));
+  board = board.map((a) => a.split('')); // 문자열은 직접 수정할 수 없으므로 배열로변환해야됌!
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[0].length; j++) {
       if (board[i][j] === 'R') start = [i, j];

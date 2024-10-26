@@ -2,7 +2,6 @@ function solution(orders, course) {
   let answer = [];
   orders = orders.map((a) => a.split(''));
 
-  // 조합
   function combi(array, n) {
     let temp = new Array(n).fill(0);
     let answer = [];
