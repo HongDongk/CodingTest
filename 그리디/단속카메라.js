@@ -1,13 +1,13 @@
 function solution(routes) {
-  let answer = 0;
-  let camera = -30001;
-  routes.sort((a, b) => a[1] - b[1]);
-  for (let route of routes) {
-    if (route[0] > camera) {
+  let answer = 1;
+  routes = routes.sort((a, b) => a[1] - b[1]);
+  let temp = routes[0][1];
+
+  for (let i = 1; i < routes.length; i++) {
+    if (temp < routes[i][0]) {
       answer++;
-      camera = route[1];
+      temp = routes[i][1];
     }
   }
-
   return answer;
 }

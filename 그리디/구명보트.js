@@ -6,7 +6,7 @@ function solution(people, limit) {
 
   while (people.length) {
     let heavy = people.pop();
-    if (heavy + people[0] <= limit) people.shift();
+    if (people.length > 0 && heavy + people[0] <= limit) people.shift();
     answer++;
   }
 
