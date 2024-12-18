@@ -1,24 +1,27 @@
 function solution(stones, k) {
   let start = 1;
-  let last = 200000000;
+  let end = stones.reduce((a, b) => a + b, 0);
   let answer = 0;
 
-  while (start <= last) {
-    let mid = parseInt((start + last) / 2);
-    let copy = stones.slice();
+  while (start <= end) {
+    let mid = parseInt((start + end) / 2);
     let count = 0;
-    for (let i = 0; i < copy.length; i++) {
+
+    for (let i = 0; i < stones.length; i++) {
       if (count >= k) break;
-      if (copy[i] - mid <= 0) count++;
-      else count = 0;
+      if (stones[i] - mid <= 0) {
+        count++;
+      } else {
+        count = 0;
+      }
     }
+
     if (count >= k) {
-      last = mid - 1;
+      end = mid - 1;
     } else {
       start = mid + 1;
-      answer = mid;
+      answer = Math.max(answer, start);
     }
   }
-
-  return start;
+  return answer;
 }
