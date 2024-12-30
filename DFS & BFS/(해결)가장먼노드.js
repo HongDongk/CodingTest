@@ -1,31 +1,26 @@
+// BFS
+
 function solution(n, edge) {
-  let result = new Array(n + 1).fill(Infinity);
-  let info = new Array(n + 1).fill(0).map((a) => []);
-
-  for (let i of edge) {
-    info[i[0]].push(i[1]);
-    info[i[1]].push(i[0]);
-  }
-
+  let answer = 0;
+  let check = new Array(n).fill(false);
+  check[0] = true;
   let queue = [1];
-  result[0] = 0;
-  result[1] = 0;
-  let count = 1;
 
-  while (queue.length) {
+  while (queue.length > 0) {
     let len = queue.length;
     for (let i = 0; i < len; i++) {
-      let current = queue.shift();
-      for (let j of info[current]) {
-        if (result[j] > count) {
-          result[j] = count;
-          queue.push(j);
+      let now = queue.shift();
+      for (let j = 0; j < edge.length; j++) {
+        if (edge[j].includes(now) && !check[edge[j][1 - edge[j].indexOf(now)] - 1]) {
+          check[edge[j][1 - edge[j].indexOf(now)] - 1] = true;
+          queue.push(edge[j][1 - edge[j].indexOf(now)]);
         }
       }
     }
-    count++;
+    if (queue.length === 0) {
+      answer = len;
+    }
   }
 
-  let maxx = Math.max(...result);
-  return result.filter((a) => a === maxx).length;
+  return answer;
 }
