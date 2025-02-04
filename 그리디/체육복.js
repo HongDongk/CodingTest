@@ -1,31 +1,27 @@
-function solution(n, lost, reserve) {
-  let info = {};
-  let answer = 0;
+// 2025/02/04
+// 여벌을 가진 학생을 정렬 후, 앞뒤를 확인하며 빌려주는 방식
 
-  for (let i = 1; i <= n; i++) {
-    info[i] = 1;
+function solution(n, lost, reserve) {
+  let students = new Array(n).fill(1);
+  for (let i = 0; i < lost.length; i++) {
+    students[lost[i] - 1] -= 1;
   }
 
-  lost.map((a) => (info[a] -= 1));
-  reserve.map((a) => (info[a] += 1));
+  for (let i = 0; i < reserve.length; i++) {
+    students[reserve[i] - 1] += 1;
+  }
 
-  for (let i = 1; i <= n; i++) {
-    if (info[i] === 0) {
-      if (info[i - 1] === 2) {
-        info[i - 1] -= 1;
-        info[i] += 1;
-      } else if (info[i + 1] === 2) {
-        info[i + 1] -= 1;
-        info[i] += 1;
+  for (let i = 0; i < students.length; i++) {
+    if (students[i] === 0) {
+      if (students[i - 1] >= 2 && i > 0) {
+        students[i - 1] -= 1;
+        students[i] = 1;
+      } else if (students[i + 1] >= 2 && i < students.length) {
+        students[i + 1] -= 1;
+        students[i] = 1;
       }
     }
   }
 
-  for (let i = 1; i <= n; i++) {
-    if (info[i] >= 1) {
-      answer++;
-    }
-  }
-
-  return answer;
+  return students.filter((a) => a >= 1).length;
 }
