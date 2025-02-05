@@ -1,4 +1,4 @@
-// 예시에 낚시가 잇음 => 택배는 무조건 최대로 들고가야됌
+// 2025/02/04
 
 function solution(cap, n, deliveries, pickups) {
   let answer = 0;
@@ -16,8 +16,6 @@ function solution(cap, n, deliveries, pickups) {
     }
   }
 
-  // 현재 cap에 맞게, 뒤에서부터 빼줌
-  // (ex)  0 3 2에 cap이 3이면 => 0 2 0
   function delItem(arr, cap) {
     let cnt = 0;
     for (let i = arr.length - 1; i >= 0; i--) {
