@@ -1,4 +1,4 @@
-// dp테이블 => N을 index만큼 사용하여 표현할 수 있는 수들의 집합
+// 2025.02.07
 
 function solution(N, number) {
   let answer = -1;

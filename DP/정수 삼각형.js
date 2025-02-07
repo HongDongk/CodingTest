@@ -1,4 +1,4 @@
-// 밑에서부터 올라간다!
+// 2025.02.07
 
 function solution(triangle) {
   let dp = triangle.slice();
