@@ -3,7 +3,6 @@
 function solution(tickets) {
   let answer = [];
   let temp = ['ICN'];
-  tickets = tickets.sort();
   let check = new Array(tickets.length).fill(false);
 
   function DFS(start, L) {
