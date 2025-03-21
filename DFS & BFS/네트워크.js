@@ -15,6 +15,7 @@ function solution(n, computers) {
 
   for (let i = 0; i < n; i++) {
     if (visited[i] === false) {
+      visited[i] = true;
       dfs(i);
       answer++;
     }
