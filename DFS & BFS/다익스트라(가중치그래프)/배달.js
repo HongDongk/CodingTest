@@ -1,29 +1,35 @@
 function solution(N, road, K) {
-  let arr = new Array(N + 1).fill(Infinity);
-  let lines = new Array(N + 1).fill(0).map((a) => []);
+  let result = new Array(N + 1).fill(Infinity);
+  let info = new Array(N + 1).fill(0).map((a) => []);
+  let visited = new Array(N + 1).fill(false);
 
-  for (let value of road) {
-    let [a, b, c] = value;
-    lines[a].push({ to: b, cost: c });
-    lines[b].push({ to: a, cost: c });
+  result[1] = 0;
+
+  for (let r of road) {
+    info[r[0]].push([r[1], r[2]]);
+    info[r[1]].push([r[0], r[2]]);
   }
 
-  let queue = [{ to: 1, cost: 0 }];
-  arr[1] = 0;
+  for (let i = 1; i <= N; i++) {
+    let u = -1;
+    let min = Infinity;
 
-  while (queue.length) {
-    queue.sort((a, b) => b.cost - a.cost); // 최소 비용 기준 정렬 (우선순위 큐 Min-Heap)
-    let current = queue.pop(); // BFS랑 다르게 pop한다!
+    for (let j = 1; j <= N; j++) {
+      if (!visited[j] && result[j] < min) {
+        min = result[j];
+        u = j;
+      }
+    }
 
-    if (arr[current.to] < current.cost) continue;
+    if (u === -1) break;
+    visited[u] = true;
 
-    for (let line of lines[current.to]) {
-      if (arr[line.to] > arr[current.to] + line.cost) {
-        arr[line.to] = arr[current.to] + line.cost;
-        queue.push(line);
+    for (let a of info[u]) {
+      if (!visited[a[0]] && result[a[0]] > min + a[1]) {
+        result[a[0]] = min + a[1];
       }
     }
   }
 
-  return arr.filter((v) => v <= K).length;
+  return result.filter((a) => a <= K).length;
 }
