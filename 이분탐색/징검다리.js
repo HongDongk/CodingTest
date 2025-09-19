@@ -1,29 +1,35 @@
 function solution(distance, rocks, n) {
   rocks.sort((a, b) => a - b);
-  let answer = 0;
-  let start = 1;
-  let last = distance;
-
   rocks.push(distance);
 
-  while (start <= last) {
-    let mid = parseInt((start + last) / 2);
-    let prevRock = 0; // 이전 돌 위치
-    let remove = 0; // 제거되는 돌 갯수
+  let start = 0;
+  let end = distance;
+  let answer = 0;
+
+  function canmake(goal) {
+    let prev = 0;
+    let count = 0;
 
     for (let i = 0; i < rocks.length; i++) {
-      if (rocks[i] - prevRock < mid) {
-        remove++;
+      if (rocks[i] - prev < goal) {
+        count++;
       } else {
-        prevRock = rocks[i];
+        prev = rocks[i];
       }
+      if (count > n) return false;
     }
 
-    if (remove > n) {
-      last = mid - 1;
-    } else {
+    return true;
+  }
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+
+    if (canmake(mid)) {
       start = mid + 1;
-      answer = Math.max(answer, mid);
+      answer = mid;
+    } else {
+      end = mid - 1;
     }
   }
 
