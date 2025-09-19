@@ -34,6 +34,7 @@ function solution(N, road, K) {
   return result.filter((a) => a <= K).length;
 }
 
+/////////// 우선순위 큐 방식 //////////////
 class PriorityQueue {
   constructor(compare = (a, b) => a - b) {
     // compare: a<b이면 음수 → a가 더 높은 우선순위
@@ -92,34 +93,30 @@ class PriorityQueue {
   }
 }
 
-// 우선순위 큐 사용
-
 function solution(N, road, K) {
+  let info = new Array(N + 1).fill(0).map((a) => []);
+  for (let [start, end, cost] of road) {
+    info[start].push([cost, end]);
+    info[end].push([cost, start]);
+  }
   let result = new Array(N + 1).fill(Infinity);
   result[1] = 0;
+
   let pq = new PriorityQueue();
   pq.push([0, 1]);
 
-  let info = new Array(N + 1).fill(0).map((a) => []);
-
-  for (let [a, b, c] of road) {
-    info[a].push([b, c]);
-    info[b].push([a, c]);
-  }
-
   while (pq.size() > 0) {
-    let [dist, current] = pq.pop();
-    if (dist !== result[current]) continue;
+    let [cost, now] = pq.pop();
+    if (result[now] < cost) continue;
 
-    for (let [next, cost] of info[current]) {
-      if (result[next] > dist + cost) {
-        result[next] = dist + cost;
-        pq.push([dist + cost, next]);
+    for (let [dist, next] of info[now]) {
+      if (result[next] > result[now] + dist) {
+        result[next] = result[now] + dist;
+        pq.push([result[next], next]);
       }
     }
   }
 
   console.log(result);
-
   return result.filter((a) => a <= K).length;
 }
