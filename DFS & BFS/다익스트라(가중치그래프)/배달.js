@@ -1,40 +1,125 @@
 function solution(N, road, K) {
-  // 1. 그래프 만들기 (양방향)
-  const g = Array.from({ length: N + 1 }, () => []);
-  for (const [a, b, c] of road) {
-    g[a].push([b, c]); // a -> b 가중치 c
-    g[b].push([a, c]); // b -> a 가중치 c
+  let result = new Array(N + 1).fill(Infinity);
+  let info = new Array(N + 1).fill(0).map((a) => []);
+  let visited = new Array(N + 1).fill(false);
+
+  result[1] = 0;
+
+  for (let r of road) {
+    info[r[0]].push([r[1], r[2]]);
+    info[r[1]].push([r[0], r[2]]);
   }
 
-  // 2. 거리 배열(dist), 방문 체크 배열(visited)
-  const dist = Array(N + 1).fill(Infinity);
-  const visited = Array(N + 1).fill(false);
-  dist[1] = 0; // 시작점은 0으로 세팅
-
-  // 3. 모든 노드를 한 번씩 처리
   for (let i = 1; i <= N; i++) {
-    // 3-1. 방문 안 한 노드 중 가장 가까운 노드 u 찾기
-    let u = -1,
-      min = Infinity;
-    for (let v = 1; v <= N; v++) {
-      if (!visited[v] && dist[v] < min) {
-        min = dist[v];
-        u = v;
+    let u = -1;
+    let min = Infinity;
+
+    for (let j = 1; j <= N; j++) {
+      if (!visited[j] && result[j] < min) {
+        min = result[j];
+        u = j;
       }
     }
-    if (u === -1) break; // 더 이상 갈 수 있는 노드 없음
 
-    // 3-2. u를 방문 처리
+    if (u === -1) break;
     visited[u] = true;
 
-    // 3-3. u의 이웃 노드 거리 갱신
-    for (const [nv, w] of g[u]) {
-      if (dist[nv] > dist[u] + w) {
-        dist[nv] = dist[u] + w;
+    for (let a of info[u]) {
+      if (!visited[a[0]] && result[a[0]] > min + a[1]) {
+        result[a[0]] = min + a[1];
       }
     }
   }
 
-  // 4. 배달 가능(거리 ≤ K)인 마을 개수 리턴
-  return dist.filter((d) => d <= K).length;
+  return result.filter((a) => a <= K).length;
+}
+
+class PriorityQueue {
+  constructor(compare = (a, b) => a - b) {
+    // compare: a<b이면 음수 → a가 더 높은 우선순위
+    this.heap = [];
+    this.compare = compare;
+  }
+
+  size() {
+    return this.heap.length;
+  }
+
+  peek() {
+    return this.heap[0] ?? null; // 루트 원소(최우선)
+  }
+
+  push(value) {
+    this.heap.push(value);
+    this._bubbleUp(this.heap.length - 1);
+  }
+
+  pop() {
+    if (this.size() === 0) return null;
+    const top = this.heap[0];
+    const last = this.heap.pop();
+    if (this.size() > 0) {
+      this.heap[0] = last;
+      this._bubbleDown(0);
+    }
+    return top;
+  }
+
+  _bubbleUp(idx) {
+    const { heap, compare } = this;
+    while (idx > 0) {
+      const parent = (idx - 1) >> 1;
+      if (compare(heap[idx], heap[parent]) >= 0) break;
+      [heap[idx], heap[parent]] = [heap[parent], heap[idx]];
+      idx = parent;
+    }
+  }
+
+  _bubbleDown(idx) {
+    const { heap, compare } = this;
+    const n = heap.length;
+    while (true) {
+      let left = idx * 2 + 1;
+      let right = left + 1;
+      let smallest = idx;
+
+      if (left < n && compare(heap[left], heap[smallest]) < 0) smallest = left;
+      if (right < n && compare(heap[right], heap[smallest]) < 0) smallest = right;
+      if (smallest === idx) break;
+      [heap[idx], heap[smallest]] = [heap[smallest], heap[idx]];
+      idx = smallest;
+    }
+  }
+}
+
+// 우선순위 큐 사용
+
+function solution(N, road, K) {
+  let result = new Array(N + 1).fill(Infinity);
+  result[1] = 0;
+  let pq = new PriorityQueue();
+  pq.push([0, 1]);
+
+  let info = new Array(N + 1).fill(0).map((a) => []);
+
+  for (let [a, b, c] of road) {
+    info[a].push([b, c]);
+    info[b].push([a, c]);
+  }
+
+  while (pq.size() > 0) {
+    let [dist, current] = pq.pop();
+    if (dist !== result[current]) continue;
+
+    for (let [next, cost] of info[current]) {
+      if (result[next] > dist + cost) {
+        result[next] = dist + cost;
+        pq.push([dist + cost, next]);
+      }
+    }
+  }
+
+  console.log(result);
+
+  return result.filter((a) => a <= K).length;
 }
